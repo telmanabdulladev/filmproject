@@ -1,0 +1,28 @@
+{% extends 'components/base.html'%}
+{% block content %}
+    <div class='container'>
+    <h1>Films</h1>
+<div class='container' style='display:flexbox'>
+  
+  {% for film in films%}
+  <div class="card mb-5 mx-3" style="max-width: 540px; float:left">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ film.poster.url }}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'app_film:detail' film.id %}">{{film.name}}</a></h5>
+          <p class="card-text">Rating: {{ film.rating}}</p>
+          <p class="card-text">{{ film.about}}</p>
+
+          <p class="card-text"><small class="text-muted">Last updated {{film.pub_date}}</small></p>
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
